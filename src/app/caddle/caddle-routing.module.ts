@@ -19,7 +19,7 @@ const caddleRoutes: Routes = [
         CommonModule,
         RouterModule.forChild(caddleRoutes)
     ],
-    exports: [],
+    exports: [RouterModule],
     providers: [],
 })
 
