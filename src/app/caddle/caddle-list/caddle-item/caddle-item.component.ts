@@ -10,11 +10,9 @@ export class CaddleItemComponent implements OnInit {
 
   @Input() caddle: Caddle;
   @Input() index: number;
-  transformedDate: string;
   constructor() { }
 
   ngOnInit() {
-    this.transformedDate = this.caddle.birthDate.toLocaleString();
   }
 
 }
