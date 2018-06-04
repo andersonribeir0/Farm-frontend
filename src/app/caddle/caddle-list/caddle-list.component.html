@@ -1,3 +1,14 @@
-<p>
-  caddle-list works!
-</p>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewCaddle()">Adicionar</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-caddle-item
+      *ngFor="let caddleEl of caddleList; let i = index"
+      [caddle]="caddleEl"
+      [index]="i"></app-caddle-item>
+  </div>
+</div>

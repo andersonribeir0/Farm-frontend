@@ -1,0 +1,13 @@
+<a
+  style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ caddle.name }}</h4>
+    <p class="list-group-item-text">número: {{ caddle.number }}</p>
+    <p class="list-group-item-text">peso: {{ caddle.weight }}</p>
+    <p class="list-group-item-text">gênero: {{ caddle.gender }}</p>
+    <p class="list-group-item-text">data de nascimento: {{ transformedDate }}</p>
+  </div>
+</a>

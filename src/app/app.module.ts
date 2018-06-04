@@ -6,17 +6,23 @@ import { CaddleModule } from './caddle/caddle.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { MilkProductionModule } from './milk-production/milk-production.module';
+import { DropdownDirective } from './shared/dropdown.directive';
+import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     CaddleModule,
     CoreModule,
-    MilkProductionModule
+    MilkProductionModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
