@@ -6,7 +6,7 @@ import { CaddleEditComponent } from './caddle-edit/caddle-edit.component';
 import { CaddleDetailComponent } from './caddle-detail/caddle-detail.component';
 
 const caddleRoutes: Routes = [
-    { path: '', component: CaddleComponent, children: [
+    { path: 'caddle', component: CaddleComponent, children: [
       { path: 'new', component: CaddleEditComponent },
       { path: ':id', component: CaddleDetailComponent },
       { path: ':id/edit', component: CaddleEditComponent},

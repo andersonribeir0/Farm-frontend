@@ -7,5 +7,5 @@ export interface Caddle {
     birthDate: Date;
     gender: string;
     weight: number;
-    milkProductions: MilkProductions     
+    milkProductions: MilkProductions[]     
 }

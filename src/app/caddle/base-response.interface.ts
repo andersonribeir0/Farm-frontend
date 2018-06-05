@@ -1,6 +1,6 @@
 import { Caddle } from "./caddle.interface";
 
 export interface BaseResponse {
-    data: Caddle[]
+    data: any
     success: boolean
 } 
