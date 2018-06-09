@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Caddle } from '../caddle.interface';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Caddle } from '../caddle.model';
 import { CaddleService } from '../caddle.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MilkProductions } from '../../milk-production/milk-productions.interface';
+import { MilkProductions } from '../../milk-production/milk-productions.model';
 
 @Component({
   selector: 'app-caddle-detail',
@@ -12,7 +12,6 @@ import { MilkProductions } from '../../milk-production/milk-productions.interfac
 export class CaddleDetailComponent implements OnInit {
   caddle: Caddle;
   id: number;
-  milkProduction: MilkProductions;
   constructor(private caddleService: CaddleService,
               private route: ActivatedRoute,
               private router: Router) { }
@@ -22,13 +21,11 @@ export class CaddleDetailComponent implements OnInit {
       (params: Params) => {
         this.id = +params['id'];
         this.caddle = this.caddleService.getCaddle(this.id);
-        //this.caddleService.getMilkProductions(this.caddle.id);
+        if(!this.caddle){
+          this.router.navigate(['../'], {relativeTo: this.route});
+        }
       }
     );
-  }
-
-  onAddMilkProduction() {
-    this.caddleService.addMilkProduction(this.caddle.id, this.milkProduction);
   }
 
   onEditCaddle() {

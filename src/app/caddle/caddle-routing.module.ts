@@ -9,7 +9,7 @@ const caddleRoutes: Routes = [
     { path: 'caddle', component: CaddleComponent, children: [
       { path: 'new', component: CaddleEditComponent },
       { path: ':id', component: CaddleDetailComponent },
-      { path: ':id/edit', component: CaddleEditComponent},
+      { path: ':id/edit', component: CaddleEditComponent}
     ] },
   ];
 
