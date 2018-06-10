@@ -52,6 +52,7 @@ export class CaddleService implements OnInit {
   }
 
   addMilkProduction(id: string, milkProduction: MilkProductions) {
+    console.log(id);
     this.httpClient.put(`${this.baseUrl}/${id}/milkProductions`, milkProduction).pipe(
       map(
         (res: Response) => {
@@ -71,11 +72,7 @@ export class CaddleService implements OnInit {
   }
 
   updateCaddle(caddle: Caddle) {
-    console.log(caddle);
-    this.httpClient.put(`${this.baseUrl}/${caddle.id}`, caddle, {
-      headers: new HttpHeaders().set('Access-Control-Allow-Origin','*'),
-      observe: 'body'
-    }).pipe(
+    this.httpClient.put(`${this.baseUrl}/${caddle.id}`, caddle).pipe(
       map(
         (res: Response) => {
           if (res) {

@@ -50,6 +50,9 @@ export class CaddleDetailComponent implements OnInit, OnDestroy {
     this.router.navigate(['/caddle']);
   }
 
+  onAddMilkProduction() {
+    this.router.navigate(['milkProduction'], {relativeTo: this.route});
+  }
   
 
 }
