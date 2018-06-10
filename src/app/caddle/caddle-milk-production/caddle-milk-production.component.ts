@@ -33,6 +33,11 @@ export class CaddleMilkProductionComponent implements OnInit {
 
   onSubmit() {
     this.caddleService.addMilkProduction(this.indexDb ,<MilkProductions>this.milkProductionForm.value);
+    this.onCancel();
+  }
+
+  onCancel() {
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 
   private initForm() {
