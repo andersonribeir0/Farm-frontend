@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CaddleService } from '../caddle.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Caddle } from '../caddle.interface';
+import { Caddle } from '../caddle.model';
 
 @Component({
   selector: 'app-caddle-list',

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Caddle } from '../../caddle.interface';
+import { Caddle } from '../../caddle.model';
 
 @Component({
   selector: 'app-caddle-item',

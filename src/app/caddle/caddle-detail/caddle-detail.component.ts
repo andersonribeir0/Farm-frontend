@@ -3,15 +3,19 @@ import { Caddle } from '../caddle.model';
 import { CaddleService } from '../caddle.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MilkProductions } from '../../milk-production/milk-productions.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-caddle-detail',
   templateUrl: './caddle-detail.component.html',
   styleUrls: ['./caddle-detail.component.css']
 })
-export class CaddleDetailComponent implements OnInit {
+export class CaddleDetailComponent implements OnInit, OnDestroy {
+
   caddle: Caddle;
   id: number;
+  subscription: Subscription;
+
   constructor(private caddleService: CaddleService,
               private route: ActivatedRoute,
               private router: Router) { }
@@ -21,11 +25,20 @@ export class CaddleDetailComponent implements OnInit {
       (params: Params) => {
         this.id = +params['id'];
         this.caddle = this.caddleService.getCaddle(this.id);
-        if(!this.caddle){
+        if(!this.caddle) {
           this.router.navigate(['../'], {relativeTo: this.route});
         }
       }
     );
+    this.subscription = this.caddleService.caddleChanged.subscribe(
+      (caddleList: Caddle[]) => {
+        this.caddle = this.caddleService.getCaddle(this.id);
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onEditCaddle() {

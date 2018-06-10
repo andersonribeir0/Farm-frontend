@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Subject, throwError, Observable } from 'rxjs';
 import { Caddle } from './caddle.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment'
 import { map, catchError } from 'rxjs/operators';
 import { BaseResponse } from './base-response.interface';
@@ -62,13 +62,19 @@ export class CaddleService implements OnInit {
         }
       ), catchError(error => throwError(error))
     ).subscribe(
-      () => this.caddleChanged.next(this.caddleList.slice())
+      () => {
+        this.fetchCaddleList();
+        this.caddleChanged.next(this.caddleList.slice())
+      }
     );
   }
 
   updateCaddle(caddle: Caddle) {
     console.log(caddle);
-    this.httpClient.put(`${this.baseUrl}/${caddle.id}`, caddle).pipe(
+    this.httpClient.put(`${this.baseUrl}/${caddle.id}`, caddle, {
+      headers: new HttpHeaders().set('Access-Control-Allow-Origin','*'),
+      observe: 'body'
+    }).pipe(
       map(
         (res: Response) => {
           if (res) {
@@ -78,7 +84,10 @@ export class CaddleService implements OnInit {
           }
         }
       ), catchError(error => throwError(error))
-    ).subscribe(() => this.caddleChanged.next(this.caddleList.slice()));
+    ).subscribe(() => {
+      this.fetchCaddleList();
+      this.caddleChanged.next(this.caddleList.slice())
+    });
   }
 
   deleteCaddle(id: string) {

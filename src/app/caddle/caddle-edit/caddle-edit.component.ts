@@ -37,10 +37,10 @@ export class CaddleEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.caddleForm);
     if (this.editMode) {
       let caddle = <Caddle>this.caddleForm.value;
       caddle.id = this.indexDb;
+      console.log(caddle);
       this.caddleService.updateCaddle(caddle);
     } else {
       this.caddleService.insertCaddle(<Caddle>this.caddleForm.value);

@@ -1,4 +1,4 @@
-import { Caddle } from "./caddle.interface";
+import { Caddle } from "./caddle.model";
 
 export interface BaseResponse {
     data: any
