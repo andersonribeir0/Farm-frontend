@@ -28,7 +28,6 @@ export class CaddleEditComponent implements OnInit {
       (params: Params) => {
         this.id = +params['id'];
         this.editMode = params['id'] != null;
-        console.log("Oi")
         this.indexDb = this.caddleService.getCaddle(this.id).id;
         if(!this.indexDb && this.editMode) {
           this.router.navigate(['../'], {relativeTo: this.route});
