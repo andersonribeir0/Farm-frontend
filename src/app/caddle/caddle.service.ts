@@ -43,6 +43,7 @@ export class CaddleService implements OnInit {
     this.httpClient.post(this.baseUrl, caddle).subscribe(
       (response: Response) => {
         if ( response.status == 201) {
+          this.fetchCaddleList();
           this.caddleList.push(caddle);
           this.caddleChanged.next(this.caddleList.slice());
         }
@@ -102,7 +103,10 @@ export class CaddleService implements OnInit {
         }
       ), catchError(error => throwError(error))
     ).subscribe(
-      () => this.caddleChanged.next(this.caddleList.slice())
+      () => {
+        this.fetchCaddleList();
+        this.caddleChanged.next(this.caddleList.slice())
+      }
     );
   }
 

@@ -23,13 +23,14 @@ export class CaddleEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initForm();    
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
         this.editMode = params['id'] != null;
-        this.initForm();
+        console.log("Oi")
         this.indexDb = this.caddleService.getCaddle(this.id).id;
-        if(!this.indexDb) {
+        if(!this.indexDb && this.editMode) {
           this.router.navigate(['../'], {relativeTo: this.route});
         }
       }
@@ -58,7 +59,6 @@ export class CaddleEditComponent implements OnInit {
     let caddleWeight: number;
     let caddleBirthDate: Date;
     let caddleGender = '';
-    let milkProductions = new FormArray([]);
 
     if(this.editMode) {
       const caddle = this.caddleService.getCaddle(this.id);
@@ -67,15 +67,15 @@ export class CaddleEditComponent implements OnInit {
       caddleWeight = caddle.weight;
       caddleBirthDate = caddle.birthDate;
       caddleGender = caddle.gender;
-
-      this.caddleForm = new FormGroup({
-        'name': new FormControl(caddleName, Validators.required),
-        'number': new FormControl(caddleNumber, Validators.required),
-        'weight': new FormControl(caddleWeight, Validators.required),
-        'birthDate': new FormControl(caddleBirthDate, Validators.required),
-        'gender': new FormControl(caddleGender, Validators.required)
-      });
     }
+
+    this.caddleForm = new FormGroup({
+      'name': new FormControl(caddleName, Validators.required),
+      'number': new FormControl(caddleNumber, Validators.required),
+      'weight': new FormControl(caddleWeight, Validators.required),
+      'birthDate': new FormControl(caddleBirthDate, Validators.required),
+      'gender': new FormControl(caddleGender, Validators.required)
+    });
 
   }
 
