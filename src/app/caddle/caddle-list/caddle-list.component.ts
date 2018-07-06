@@ -27,7 +27,7 @@ export class CaddleListComponent implements OnInit, OnDestroy {
   }
 
   onNewCaddle() {
-    this.router.navigate(['new'], {relativeTo: this.route});
+    this.router.navigate(['novo'], {relativeTo: this.route});
   }
 
   ngOnDestroy() {

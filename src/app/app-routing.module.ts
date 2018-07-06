@@ -8,8 +8,8 @@ import { CaddleModule } from './caddle/caddle.module';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'caddle', component: CaddleComponent},
-    { path: 'milk-production', component: MilkProductionComponent}
+    { path: 'gado', component: CaddleComponent},
+    { path: 'producao-leite', component: MilkProductionComponent}
 ];
 
 @NgModule({

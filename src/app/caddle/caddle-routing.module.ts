@@ -7,12 +7,15 @@ import { CaddleDetailComponent } from './caddle-detail/caddle-detail.component';
 import { CaddleMilkProductionComponent } from './caddle-milk-production/caddle-milk-production.component';
 
 const caddleRoutes: Routes = [
-    { path: 'caddle', component: CaddleComponent, children: [
-      { path: 'new', component: CaddleEditComponent },
-      { path: ':id', component: CaddleDetailComponent },
-      { path: ':id/edit', component: CaddleEditComponent},
-      { path: ':id/milkProduction', component: CaddleMilkProductionComponent}
-    ] },
+    { path: '', component: CaddleComponent },
+    {
+        path: 'gado', component: CaddleComponent, children: [
+            { path: 'novo', component: CaddleEditComponent },
+            { path: ':id', component: CaddleDetailComponent },
+            { path: ':id/editar', component: CaddleEditComponent},
+            { path: ':id/producao-leite', component: CaddleMilkProductionComponent}
+            ]
+    }
   ];
 
 @NgModule({
