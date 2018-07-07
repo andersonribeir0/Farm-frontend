@@ -9,7 +9,7 @@ import { MilkProductions } from '../milk-production/milk-productions.model';
 
 @Injectable()
 export class CaddleService implements OnInit {
-  baseUrl = environment.url;
+  baseUrl = `${environment.url}/caddle`;
   caddleChanged = new Subject<Caddle[]>();
   private caddleList: Caddle[] = [];
 

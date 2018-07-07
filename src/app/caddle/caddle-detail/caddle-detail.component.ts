@@ -42,16 +42,16 @@ export class CaddleDetailComponent implements OnInit, OnDestroy {
   }
 
   onEditCaddle() {
-    this.router.navigate(['edit'], {relativeTo: this.route});
+    this.router.navigate(['editar'], {relativeTo: this.route});
   }
 
   onDeleteCaddle() {
     this.caddleService.deleteCaddle(this.caddle.id);
-    this.router.navigate(['/caddle']);
+    this.router.navigate(['/gado']);
   }
 
   onAddMilkProduction() {
-    this.router.navigate(['milkProduction'], {relativeTo: this.route});
+    this.router.navigate(['producao-leite'], {relativeTo: this.route});
   }
   
 
